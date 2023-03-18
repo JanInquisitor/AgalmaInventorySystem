@@ -1,7 +1,8 @@
 # Inventory Management System
 
 This is an inventory management system built with Java. It allows you to manage your inventory of products and keep track of sales and orders.
-Features
+
+## Features
 
 * Add and remove products from inventory
 * Update product information
