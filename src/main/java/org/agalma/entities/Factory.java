@@ -1,10 +1,9 @@
-package entities;
+package org.agalma.entities;
 
-import interfaces.IStorage;
-import items.ProductItem;
+import org.agalma.interfaces.IStorage;
 
 import java.time.LocalDate;
-import java.util.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Factory implements IStorage {
@@ -19,17 +18,22 @@ public class Factory implements IStorage {
     }
 
     @Override
-    public List<ProductItem> searchByStore(Store store) {
-        return null;
-    }
-
-    @Override
     public List<ProductItem> searchByDate(LocalDate additionDate) {
         return null;
     }
 
     @Override
-    public void addItem(ProductItem item) {
+    public ArrayList<InventoryItem> getStoredItems() {
+        return null;
+    }
+
+    @Override
+    public void addItem(InventoryItem item) {
+
+    }
+
+    @Override
+    public void addItems(List<InventoryItem> item) {
 
     }
 }

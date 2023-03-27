@@ -1,4 +1,4 @@
-package items;
+package org.agalma.entities;
 
 public class SkinProduct extends ProductItem {
 

@@ -1,16 +1,16 @@
-package items;
-
-import entities.Store;
+package org.agalma.entities;
 
 import java.util.ArrayList;
-import java.util.List;
 
 // This class represents the individual Items in store. It will be the data type of this system. (Or one of them at least)
 public class ProductItem {
-    private String productId;
+    private final String productId;
     private String productName;
     private double price;
-    private Store store;
+
+    // I will have these two attribute/property as a boolean to compute just in time the discounted price if this bool is made true
+    private boolean sale = false;
+//    private int saleDiscountPercent; This line is a maybe
 
     private final ArrayList<String> ingredients = new ArrayList<String>();
 
@@ -40,11 +40,9 @@ public class ProductItem {
         this.price = price;
     }
 
-//    public double getTotalPrice() {
-//        return price * quantity;
-//    }
-//
-//    public void updateQuantity(int newQuantity) {
-//        this.quantity = newQuantity;
-//    }
+
+    @Override
+    public String toString() {
+        return productName;
+    }
 }
