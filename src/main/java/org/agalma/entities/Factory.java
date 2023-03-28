@@ -6,6 +6,8 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+
+// Factory and storage are the main bulk of the application.
 public class Factory implements IStorage {
     @Override
     public List<ProductItem> searchByName(String name) {
@@ -23,17 +25,22 @@ public class Factory implements IStorage {
     }
 
     @Override
-    public ArrayList<InventoryItem> getStoredItems() {
+    public ArrayList<ProductItem> getStoredItems() {
         return null;
     }
 
     @Override
-    public void addItem(InventoryItem item) {
+    public void addItem(ProductItem item) {
 
     }
 
     @Override
-    public void addItems(List<InventoryItem> item) {
+    public void addItems(List<ProductItem> item) {
+
+    }
+
+    @Override
+    public void addItems(ProductItem[] items) {
 
     }
 }

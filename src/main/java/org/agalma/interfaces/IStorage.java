@@ -1,6 +1,5 @@
 package org.agalma.interfaces;
 
-import org.agalma.entities.InventoryItem;
 import org.agalma.entities.ProductItem;
 
 import java.time.LocalDate;
@@ -12,15 +11,16 @@ public interface IStorage {
 
     public List<ProductItem> searchByCode(int code);
 
-//    public List<ProductItem> searchByStore(Store store);
-
     public List<ProductItem> searchByDate(LocalDate additionDate);
 
-    void addItem(InventoryItem item);
+    void addItem(ProductItem item);
 
-    void addItems(List<InventoryItem> item);
+    void addItems(List<ProductItem> item);
 
+    void addItems(ProductItem[] items);
 
-    public ArrayList<InventoryItem> getStoredItems();
+    public ArrayList<ProductItem> getStoredItems();
+
+    //    public List<ProductItem> searchByStore(Store store);
 
 }

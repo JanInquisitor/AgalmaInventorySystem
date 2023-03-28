@@ -4,14 +4,14 @@ import org.agalma.interfaces.IStorage;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Store implements IStorage {
     String name;
     String address; // Maybe make an address class
 
-    private final ArrayList<InventoryItem> storedItems = new ArrayList<InventoryItem>();
-
+    private final ArrayList<ProductItem> storedItems = new ArrayList<ProductItem>();
 
     public Store(String name, String address) {
         this.name = name;
@@ -33,18 +33,22 @@ public class Store implements IStorage {
         return null;
     }
 
-    //
     @Override
-    public void addItem(InventoryItem item) {
+    public void addItem(ProductItem item) {
         storedItems.add(item);
     }
 
     @Override
-    public void addItems(List<InventoryItem> items) {
+    public void addItems(List<ProductItem> items) {
         storedItems.addAll(items);
     }
 
-    public ArrayList<InventoryItem> getStoredItems() {
+    @Override
+    public void addItems(ProductItem[] items) {
+        storedItems.addAll(Arrays.asList(items));
+    }
+
+    public ArrayList<ProductItem> getStoredItems() {
         return storedItems;
     }
 

@@ -1,48 +1,58 @@
 package org.agalma.entities;
 
-import java.util.ArrayList;
+import org.agalma.interfaces.IStorage;
 
-// This class represents the individual Items in store. It will be the data type of this system. (Or one of them at least)
-public class ProductItem {
-    private final String productId;
-    private String productName;
+import java.time.LocalDateTime;
+
+
+// This class is used for keeping track and handling the products items in the inventory and its information,
+public class ProductItem extends Product {
+    private String barcode;
     private double price;
+    private int quantity;
+    private final LocalDateTime creationDate;
+    private String store;
 
-    // I will have these two attribute/property as a boolean to compute just in time the discounted price if this bool is made true
-    private boolean sale = false;
-//    private int saleDiscountPercent; This line is a maybe
-
-    private final ArrayList<String> ingredients = new ArrayList<String>();
-
-    public ProductItem(String productId, String productName, double price) {
-        this.productId = productId;
-        this.productName = productName;
+    public ProductItem(String ISBN, String name, boolean sale, String barcode, double price, int quantity, LocalDateTime creationDate, String store) {
+        super(ISBN, name, sale);
+        this.barcode = barcode;
         this.price = price;
+        this.quantity = quantity;
+        this.creationDate = creationDate;
+        this.store = store;
     }
 
-    public String getProductId() {
-        return productId;
+    public int getQuantity() {
+        return quantity;
     }
 
-    public String getProductName() {
-        return productName;
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
-    public void setProductName(String productName) {
-        this.productName = productName;
+    public String getLocation() {
+        return store;
     }
 
-    public double getPrice() {
-        return price;
+
+    // This method will be used for when the item is transfer to another storage.
+    public void transfer(IStorage storage) {
+
     }
 
-    public void setPrice(double price) {
-        this.price = price;
+    public double getTotalPrice() {
+        return price * quantity;
     }
-
 
     @Override
     public String toString() {
-        return productName;
+        return "ProductItem{" +
+                "barcode='" + barcode + '\'' +
+                ", price=" + price +
+                ", quantity=" + quantity +
+                ", creationDate=" + creationDate +
+                ", store='" + store + '\'' +
+                '}';
     }
 }
+
