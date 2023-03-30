@@ -7,20 +7,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public interface IStorage {
-    public List<ProductItem> searchByName(String name);
+    public ProductItem searchByName(String name);
 
-    public List<ProductItem> searchByCode(int code);
+    public ProductItem searchByCode(int code);
 
-    public List<ProductItem> searchByDate(LocalDate additionDate);
+    public ProductItem searchByDate(LocalDate additionDate);
+
+    public ArrayList<ProductItem> getStoredItems();
 
     void addItem(ProductItem item);
 
     void addItems(List<ProductItem> item);
 
     void addItems(ProductItem[] items);
-
-    public ArrayList<ProductItem> getStoredItems();
-
-    //    public List<ProductItem> searchByStore(Store store);
 
 }

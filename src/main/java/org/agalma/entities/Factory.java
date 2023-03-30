@@ -10,17 +10,17 @@ import java.util.List;
 // Factory and storage are the main bulk of the application.
 public class Factory implements IStorage {
     @Override
-    public List<ProductItem> searchByName(String name) {
+    public ProductItem searchByName(String name) {
         return null;
     }
 
     @Override
-    public List<ProductItem> searchByCode(int code) {
+    public ProductItem searchByCode(int code) {
         return null;
     }
 
     @Override
-    public List<ProductItem> searchByDate(LocalDate additionDate) {
+    public ProductItem searchByDate(LocalDate additionDate) {
         return null;
     }
 
