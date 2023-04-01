@@ -1,14 +1,13 @@
 package org.agalma.entities;
 
-import org.agalma.interfaces.IStorage;
-
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 
 // Factory and storage are the main bulk of the application.
-public class Factory implements IStorage {
+public class Factory extends Storage {
     @Override
     public ProductItem searchByName(String name) {
         return null;
@@ -43,4 +42,17 @@ public class Factory implements IStorage {
     public void addItems(ProductItem[] items) {
 
     }
+
+    // @TODO: Implement this factory method.
+    @Override
+    public Product createProduct(String ISBN, String name, boolean sale, String barcode, double price, int quantity, LocalDateTime creationDate, String store) {
+        return null;
+    }
+
+    // @TODO: Implement this factory method.
+    @Override
+    public Product createProduct(String ISBN, String name, boolean sale, String barcode, double price, int quantity, LocalDateTime creationDate, String store, String[] ingredients) {
+        return null;
+    }
+
 }

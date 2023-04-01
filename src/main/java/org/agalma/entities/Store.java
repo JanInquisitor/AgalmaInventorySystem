@@ -1,15 +1,15 @@
 package org.agalma.entities;
 
-import org.agalma.interfaces.IStorage;
 import org.jetbrains.annotations.NotNull;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 
-public class Store implements IStorage {
+public class Store extends Storage {
     String name;
     String address; // Maybe make an address class
 
@@ -36,16 +36,20 @@ public class Store implements IStorage {
     // @TODO: Improve this method.
     // This is a temporal implementation.
     // It should probably change the store location property too.
-    public void transferTo(@NotNull IStorage storage, ProductItem[] itemsToTransfer) {
+    public void transferTo(@NotNull Storage storage, ProductItem[] itemsToTransfer) {
         if (storedItems.size() != 0) {
-            for (ProductItem currentItem : itemsToTransfer) {
-                for (int j = 0; j < storedItems.size(); j++) {
-                    if (storedItems.get(j).equals(currentItem)) {
-                        storedItems.remove(storedItems.get(j));
+            try {
+                for (ProductItem currentItem : itemsToTransfer) {
+                    for (int j = 0; j < storedItems.size(); j++) {
+                        if (storedItems.get(j).equals(currentItem)) {
+                            storedItems.remove(storedItems.get(j));
+                        }
                     }
                 }
+                storage.addItems(itemsToTransfer);
+            } catch (Exception e) {
+                throw new RuntimeException(e);
             }
-            storage.addItems(itemsToTransfer);
         }
     }
 
@@ -103,6 +107,20 @@ public class Store implements IStorage {
         return storedItems;
     }
 
+    // @TODO: Implement this factory method.
+    // Here products will be created with this factory method inherited from the storage parent abstract class.
+    // This method don't always need to return a new instance, if there's already built instances then it will return
+    // one of those.
+    @Override
+    public ProductItem createProduct(String ISBN, String name, boolean sale, String barcode, double price, int quantity, LocalDateTime creationDate, String store) {
+        return new ProductItem(ISBN, name, sale, barcode, price, quantity, creationDate, store);
+    }
+
+    // @TODO: Implement this factory method.
+    @Override
+    public ProductItem createProduct(String ISBN, String name, boolean sale, String barcode, double price, int quantity, LocalDateTime creationDate, String store, String[] ingredients) {
+        return new ProductItem(ISBN, name, sale, barcode, price, quantity, creationDate, store, ingredients);
+    }
 
     @Override
     public String toString() {

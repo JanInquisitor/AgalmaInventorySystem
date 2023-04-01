@@ -12,52 +12,52 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
 
+        // Create  stores
+        Store blueMall = new Store("Blue Mall", "Av. Winston Churchill.");
+        Store puntaCana = new Store("Punta Cana", "Blue mall Punta cana.");
+
         // Create items
-        ProductItem bodyLotion = new ProductItem(
+        ProductItem bodyLotion = blueMall.createProduct(
                 "852395",
-                "Locion corporal ",
-                false, "sample_barcode",
-                450, 50, LocalDateTime.now(),
+                "Locion corporal",
+                false,
+                "sample_barcode",
+                456,
+                50,
+                LocalDateTime.now(),
                 "Blue mall");
 
-        String[] ingredients = {"Aceite", "Rosa de mosqueta", "Algo con hidrogeno"};
-
-        ProductItem soap = new ProductItem("2344586",
+        ProductItem soap = blueMall.createProduct("2344586",
                 "Jabon Cielo",
                 false,
                 "sample_barcode",
                 275,
                 400,
                 LocalDateTime.now(),
-                "Blue mall",
-                ingredients);
-        ProductItem goatMilkSoap = new ProductItem("62313",
+                "Blue mall");
+
+        ProductItem goatMilkSoap = blueMall.createProduct("62313",
                 "Jabon Leche de cabra.",
                 false,
                 "sample_barcode",
                 300,
                 49,
                 LocalDateTime.now(),
-                "Punta cana",
-                ingredients);
-        ProductItem mintSoap = new ProductItem("6341367",
+                "Punta cana");
+
+        ProductItem mintSoap = blueMall.createProduct("6341367",
                 "Jabon menta.",
                 false,
                 "sample_barcode",
                 275,
                 71,
                 LocalDateTime.now(),
-                "Punta cana",
-                ingredients);
+                "Punta cana");
 
-
-        // Create  stores
-        Store blueMall = new Store("Blue Mall", "Av. Winston Churchill.");
-        Store puntaCana = new Store("Punta Cana", "Blue mall Punta cana.");
 
         // Create an Array of ProductItems and add it to the store.
         ProductItem[] firstItemsArray = {bodyLotion, soap, goatMilkSoap, mintSoap};
-        blueMall.addItems(List.of(firstItemsArray));
+        blueMall.addItems(firstItemsArray);
         ProductItem[] secondItemArray = {bodyLotion, soap};
 
         // Testing transfer

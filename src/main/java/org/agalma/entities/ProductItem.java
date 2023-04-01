@@ -9,6 +9,7 @@ public class ProductItem extends Product {
     private int quantity;
     private final LocalDateTime creationDate;
     private String store;
+    private int batchNumber = Integer.parseInt(null);
 
     public ProductItem(String ISBN, String name, boolean sale, String barcode, double price, int quantity, LocalDateTime creationDate, String store) {
         super(ISBN, name, sale);
@@ -47,5 +48,6 @@ public class ProductItem extends Product {
     public double getTotalPrice() {
         return price * quantity;
     }
+
 }
 

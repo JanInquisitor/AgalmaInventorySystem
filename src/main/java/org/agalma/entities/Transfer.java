@@ -1,8 +1,6 @@
 package org.agalma.entities;
 
 
-import org.agalma.interfaces.IStorage;
-
 public class Transfer {
 
     private ProductItem[] items;
@@ -12,7 +10,7 @@ public class Transfer {
     }
 
     // @TODO: Implement the transfer logic here
-    public void transferTo(IStorage storage) {
+    public void transferTo(Storage storage) {
 
     }
 }

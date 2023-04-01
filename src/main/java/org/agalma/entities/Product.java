@@ -1,7 +1,5 @@
 package org.agalma.entities;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Objects;
 
 // This class represents the individual Items in store. It will be the data type of this system. (Or one of them at least)
