@@ -1,5 +1,6 @@
 package org.agalma.entities;
 
+import org.agalma.utils.Transfer;
 import org.jetbrains.annotations.NotNull;
 
 import java.time.LocalDate;
@@ -38,18 +39,19 @@ public class Store extends Storage {
     // It should probably change the store location property too.
     public void transferTo(@NotNull Storage storage, ProductItem[] itemsToTransfer) {
         if (storedItems.size() != 0) {
-            try {
-                for (ProductItem currentItem : itemsToTransfer) {
-                    for (int j = 0; j < storedItems.size(); j++) {
-                        if (storedItems.get(j).equals(currentItem)) {
-                            storedItems.remove(storedItems.get(j));
-                        }
+            return;
+        }
+        try {
+            for (ProductItem currentItem : itemsToTransfer) {
+                for (int j = 0; j < storedItems.size(); j++) {
+                    if (storedItems.get(j).equals(currentItem)) {
+                        storedItems.remove(storedItems.get(j));
                     }
                 }
-                storage.addItems(itemsToTransfer);
-            } catch (Exception e) {
-                throw new RuntimeException(e);
             }
+            storage.addItems(itemsToTransfer);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
     }
 
@@ -57,7 +59,6 @@ public class Store extends Storage {
         return new Transfer(items);
     }
 
-    @Override
     public ProductItem searchByName(String name) {
         for (ProductItem product : storedItems) {
             if (product.getProductName().equals(name)) {
@@ -67,17 +68,15 @@ public class Store extends Storage {
         return null;
     }
 
-    @Override
     public ProductItem searchByCode(int code) {
         for (ProductItem product : storedItems) {
-            if (product.getProductISBN().equals(code)) {
+            if (product.getProductGTIN().equals(code)) {
                 return product;
             }
         }
         return null;
     }
 
-    @Override
     public ProductItem searchByDate(LocalDate additionDate) {
         for (ProductItem product : storedItems) {
             if (product.getProductName().equals(additionDate)) {
@@ -87,22 +86,18 @@ public class Store extends Storage {
         return null;
     }
 
-    @Override
     public void addItem(ProductItem item) {
         storedItems.add(item);
     }
 
-    @Override
     public void addItems(List<ProductItem> items) {
         storedItems.addAll(items);
     }
 
-    @Override
     public void addItems(ProductItem[] items) {
         storedItems.addAll(Arrays.asList(items));
     }
 
-    @Override
     public ArrayList<ProductItem> getStoredItems() {
         return storedItems;
     }

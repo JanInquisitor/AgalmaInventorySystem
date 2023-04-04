@@ -1,6 +1,10 @@
-package org.agalma.entities;
+package org.agalma.utils;
 
 
+import org.agalma.entities.ProductItem;
+import org.agalma.entities.Storage;
+
+// If transfering becomes more complicated I'll consider making it an interface.
 public class Transfer {
 
     private ProductItem[] items;
