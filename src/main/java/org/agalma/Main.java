@@ -24,7 +24,8 @@ public class Main {
                 LocalDateTime.now(),
                 "Blue mall");
 
-        ProductItem soap = blueMall.createProduct("2344586",
+        ProductItem soap = blueMall.createProduct(
+                "2344586",
                 "Jabon Cielo",
                 false,
                 "sample_barcode",
@@ -33,7 +34,8 @@ public class Main {
                 LocalDateTime.now(),
                 "Blue mall");
 
-        ProductItem goatMilkSoap = blueMall.createProduct("62313",
+        ProductItem goatMilkSoap = blueMall.createProduct(
+                "62313",
                 "Jabon Leche de cabra.",
                 false,
                 "sample_barcode",
@@ -42,7 +44,8 @@ public class Main {
                 LocalDateTime.now(),
                 "Punta cana");
 
-        ProductItem mintSoap = blueMall.createProduct("6341367",
+        ProductItem mintSoap = blueMall.createProduct(
+                "6341367",
                 "Jabon menta.",
                 false,
                 "sample_barcode",
