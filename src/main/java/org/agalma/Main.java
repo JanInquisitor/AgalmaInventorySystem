@@ -1,12 +1,9 @@
 package org.agalma;
 
-
-import org.agalma.entities.Product;
 import org.agalma.entities.Store;
 import org.agalma.entities.ProductItem;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 
 public class Main {

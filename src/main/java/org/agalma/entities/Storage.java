@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+// Considering moving some methods to an interface.
 public abstract class Storage {
 
     public abstract ProductItem searchByName(String name);
