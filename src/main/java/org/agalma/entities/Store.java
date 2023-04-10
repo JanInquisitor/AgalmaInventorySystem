@@ -51,7 +51,6 @@ public class Store extends Storage {
         storage.addItems(itemsToTransfer);
     }
 
-
     public Transfer makeTransferObject(ProductItem[] items) {
         return new Transfer(items);
     }

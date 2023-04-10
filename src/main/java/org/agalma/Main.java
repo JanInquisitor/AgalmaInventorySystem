@@ -73,14 +73,6 @@ public class Main {
         System.out.println(blueMall.searchByName("Jabon Cielo"));
         System.out.println("Stored items in blue mall: " + blueMall.totalProductsQuantity());
 
-        // Testing printing functionalities
-        String[][] sampleText = {
-                {"Hello Paula"},
-                {"Hello Felix"},
-                {"Hello from the Printer :D"}
-        };
-        blueMall.printInventory(sampleText);
-
     }
 
 }
