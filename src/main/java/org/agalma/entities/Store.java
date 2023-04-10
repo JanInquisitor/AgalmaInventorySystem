@@ -1,8 +1,12 @@
 package org.agalma.entities;
 
+import jdk.jshell.spi.ExecutionControl;
+import org.agalma.services.printing.InventoryTablePrinter;
 import org.agalma.utils.Transfer;
 import org.jetbrains.annotations.NotNull;
 
+import javax.print.PrintService;
+import java.awt.print.PrinterJob;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -38,22 +42,15 @@ public class Store extends Storage {
     // This is a temporal implementation.
     // It should probably change the store location property too.
     public void transferTo(@NotNull Storage storage, ProductItem[] itemsToTransfer) {
-        if (storedItems.size() != 0) {
+        if (storedItems.size() == 0) {
             return;
         }
-        try {
-            for (ProductItem currentItem : itemsToTransfer) {
-                for (int j = 0; j < storedItems.size(); j++) {
-                    if (storedItems.get(j).equals(currentItem)) {
-                        storedItems.remove(storedItems.get(j));
-                    }
-                }
-            }
-            storage.addItems(itemsToTransfer);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
+        for (ProductItem currentItem : itemsToTransfer) {
+            storedItems.remove(currentItem);
         }
+        storage.addItems(itemsToTransfer);
     }
+
 
     public Transfer makeTransferObject(ProductItem[] items) {
         return new Transfer(items);
@@ -96,6 +93,26 @@ public class Store extends Storage {
 
     public void addItems(ProductItem[] items) {
         storedItems.addAll(Arrays.asList(items));
+    }
+
+    public void generateInvoice() throws ExecutionControl.NotImplementedException {
+        throw new ExecutionControl.NotImplementedException("Method not yet implemented.");
+    }
+
+    public void printInventory(String inventorySource) {
+        PrintService[] availablePrinters = PrinterJob.lookupPrintServices();
+//        System.out.println(Arrays.toString(availablePrinters));
+
+        InventoryTablePrinter printer = new InventoryTablePrinter(inventorySource);
+        printer.print();
+    }
+
+    public void printInventory(String[][] inventorySource) {
+        PrintService[] availablePrinters = PrinterJob.lookupPrintServices();
+//        System.out.println(Arrays.toString(availablePrinters));
+
+        InventoryTablePrinter printer = new InventoryTablePrinter(inventorySource);
+        printer.print();
     }
 
     public ArrayList<ProductItem> getStoredItems() {

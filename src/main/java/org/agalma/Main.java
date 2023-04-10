@@ -3,11 +3,12 @@ package org.agalma;
 import org.agalma.entities.Store;
 import org.agalma.entities.ProductItem;
 
+import java.awt.print.PrinterException;
 import java.time.LocalDateTime;
 
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws PrinterException {
 
         // Create  stores
         Store blueMall = new Store("Blue Mall", "Av. Winston Churchill.");
@@ -20,7 +21,7 @@ public class Main {
                 false,
                 "sample_barcode",
                 456,
-                50,
+                7,
                 LocalDateTime.now(),
                 "Blue mall");
 
@@ -30,7 +31,7 @@ public class Main {
                 false,
                 "sample_barcode",
                 275,
-                400,
+                116,
                 LocalDateTime.now(),
                 "Blue mall");
 
@@ -70,7 +71,15 @@ public class Main {
 
         // Testing Store functionalities
         System.out.println(blueMall.searchByName("Jabon Cielo"));
-        System.out.println(blueMall.totalProductsQuantity());
+        System.out.println("Stored items in blue mall: " + blueMall.totalProductsQuantity());
+
+        // Testing printing functionalities
+        String[][] sampleText = {
+                {"Hello Paula"},
+                {"Hello Felix"},
+                {"Hello from the Printer :D"}
+        };
+        blueMall.printInventory(sampleText);
 
     }
 
