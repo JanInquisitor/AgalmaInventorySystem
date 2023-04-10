@@ -47,7 +47,7 @@ public abstract class Product {
     @Override
     public String toString() {
         return "Product{" +
-                "ISBN='" + GTIN + '\'' +
+                "GTIN='" + GTIN + '\'' +
                 ", name='" + name + '\'' +
                 '}';
     }
