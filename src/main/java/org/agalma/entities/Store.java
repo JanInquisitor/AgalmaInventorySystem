@@ -17,13 +17,94 @@ import java.util.List;
 public class Store extends Storage {
     String name;
     String address; // Maybe make an address class
-
-    private final ArrayList<ProductItem> storedItems = new ArrayList<ProductItem>();
+    private final ArrayList<ProductItem> storedItems;
 
     public Store(String name, String address) {
         this.name = name;
         this.address = address;
+        this.storedItems = new ArrayList<ProductItem>();
     }
+
+    @Override
+    public ProductItem createProduct(String ISBN, String name, boolean sale, String barcode, double price, int quantity, LocalDateTime creationDate, String store) {
+        ProductItem product = null;
+        for (ProductItem item : storedItems) {
+            if (item.getProductName().equals(name)) {
+                product = item;
+            }
+        }
+        if (product == null) {
+            product = new ProductItem(ISBN, name, sale, barcode, price, quantity, creationDate, store);
+            storedItems.add(product);
+        }
+        return product;
+    }
+
+    @Override
+    public ProductItem createProduct(String ISBN, String name, boolean sale, String barcode, double price, int quantity, LocalDateTime creationDate, String store, String[] ingredients) {
+        ProductItem product = null;
+        for (ProductItem item : storedItems) {
+            if (item.getProductName().equals(name)) {
+                product = item;
+            }
+        }
+        if (product == null) {
+            product = new ProductItem(ISBN, name, sale, barcode, price, quantity, creationDate, store, ingredients);
+            storedItems.add(product);
+        }
+        storedItems.add(product);
+        return product;
+    }
+
+    @Override
+    public ProductItem searchByName(String name) {
+        for (ProductItem product : storedItems) {
+            if (product.getProductName().equals(name)) {
+                return product;
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public ProductItem searchByCode(int code) {
+        for (ProductItem product : storedItems) {
+            if (product.getProductGTIN().equals(code)) {
+                return product;
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public ProductItem searchByDate(LocalDate additionDate) {
+        for (ProductItem product : storedItems) {
+            if (product.getProductName().equals(additionDate)) {
+                return product;
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public void addItem(ProductItem item) {
+        storedItems.add(item);
+    }
+
+    @Override
+    public void addItem(String GTIN, String name, boolean sale, String barcode, double price, int quantity, LocalDateTime creationDate, String store) {
+        ProductItem product = new ProductItem(
+                GTIN,
+                name,
+                sale,
+                barcode,
+                price,
+                quantity,
+                creationDate,
+                store
+        );
+    }
+
 
     public int totalProductsQuantity() {
         int sum = 0;
@@ -55,36 +136,6 @@ public class Store extends Storage {
         return new Transfer(items);
     }
 
-    public ProductItem searchByName(String name) {
-        for (ProductItem product : storedItems) {
-            if (product.getProductName().equals(name)) {
-                return product;
-            }
-        }
-        return null;
-    }
-
-    public ProductItem searchByCode(int code) {
-        for (ProductItem product : storedItems) {
-            if (product.getProductGTIN().equals(code)) {
-                return product;
-            }
-        }
-        return null;
-    }
-
-    public ProductItem searchByDate(LocalDate additionDate) {
-        for (ProductItem product : storedItems) {
-            if (product.getProductName().equals(additionDate)) {
-                return product;
-            }
-        }
-        return null;
-    }
-
-    public void addItem(ProductItem item) {
-        storedItems.add(item);
-    }
 
     public void addItems(List<ProductItem> items) {
         storedItems.addAll(items);
@@ -96,6 +147,10 @@ public class Store extends Storage {
 
     public void generateInvoice() throws ExecutionControl.NotImplementedException {
         throw new ExecutionControl.NotImplementedException("Method not yet implemented.");
+    }
+
+    public ArrayList<ProductItem> getStoredItems() {
+        return storedItems;
     }
 
     public void printInventory(String inventorySource) {
@@ -112,25 +167,6 @@ public class Store extends Storage {
 
         InventoryTablePrinter printer = new InventoryTablePrinter(inventorySource);
         printer.print();
-    }
-
-    public ArrayList<ProductItem> getStoredItems() {
-        return storedItems;
-    }
-
-    // @TODO: Implement this factory method.
-    // Here products will be created with this factory method inherited from the storage parent abstract class.
-    // This method don't always need to return a new instance, if there's already built instances then it will return
-    // one of those.
-    @Override
-    public ProductItem createProduct(String ISBN, String name, boolean sale, String barcode, double price, int quantity, LocalDateTime creationDate, String store) {
-        return new ProductItem(ISBN, name, sale, barcode, price, quantity, creationDate, store);
-    }
-
-    // @TODO: Implement this factory method.
-    @Override
-    public ProductItem createProduct(String ISBN, String name, boolean sale, String barcode, double price, int quantity, LocalDateTime creationDate, String store, String[] ingredients) {
-        return new ProductItem(ISBN, name, sale, barcode, price, quantity, creationDate, store, ingredients);
     }
 
     @Override

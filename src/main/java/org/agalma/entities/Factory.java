@@ -34,6 +34,11 @@ public class Factory extends Storage {
     }
 
     @Override
+    public void addItem(String GTIN, String name, boolean sale, String barcode, double price, int quantity, LocalDateTime creationDate, String store) {
+
+    }
+
+    @Override
     public void addItems(List<ProductItem> item) {
 
     }
