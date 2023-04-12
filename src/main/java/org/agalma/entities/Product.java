@@ -5,6 +5,7 @@ import java.util.Objects;
 public abstract class Product {
     private String GTIN;
     private final String name;
+    private String description;
     private boolean sale;
     private final String[] ingredients;
 
@@ -23,13 +24,16 @@ public abstract class Product {
         this.ingredients = ingredients;
     }
 
-
     public String getProductGTIN() {
         return GTIN;
     }
 
     public String getProductName() {
         return name;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     @Override
@@ -51,4 +55,5 @@ public abstract class Product {
                 ", name='" + name + '\'' +
                 '}';
     }
+
 }

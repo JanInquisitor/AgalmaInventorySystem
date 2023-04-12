@@ -1,5 +1,6 @@
 package org.agalma;
 
+import org.agalma.entities.Product;
 import org.agalma.entities.Store;
 import org.agalma.entities.ProductItem;
 
@@ -55,6 +56,26 @@ public class Main {
                 LocalDateTime.now(),
                 "Punta cana");
 
+
+        ProductItem mintSoapTwo = blueMall.createProduct(
+                "16284",
+                "Jabon menta.",
+                false,
+                "sample_barcode",
+                275,
+                71,
+                LocalDateTime.now(),
+                "Punta cana");
+
+        ProductItem mintSoapThree = blueMall.createProduct(
+                "8282",
+                "Jabon menta.",
+                false,
+                "sample_barcode",
+                275,
+                71,
+                LocalDateTime.now(),
+                "Punta cana");
 
         // Create an Array of ProductItems and add it to the store.
         ProductItem[] firstItemsArray = {bodyLotion, soap, goatMilkSoap, mintSoap};
