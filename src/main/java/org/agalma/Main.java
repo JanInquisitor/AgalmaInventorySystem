@@ -1,6 +1,6 @@
 package org.agalma;
 
-import org.agalma.entities.Product;
+import org.agalma.data.DatabaseConnection;
 import org.agalma.entities.Store;
 import org.agalma.entities.ProductItem;
 
@@ -93,6 +93,17 @@ public class Main {
         // Testing Store functionalities
         System.out.println(blueMall.searchByName("Jabon Cielo"));
         System.out.println("Stored items in blue mall: " + blueMall.totalProductsQuantity());
+
+
+        String url = "jdbc:postgresql://localhost/fishnetdb";
+        String user = "postgres";
+        String password = "admin";
+
+        DatabaseConnection conn = new DatabaseConnection(url, user, password);
+//        conn.connect();
+        int count = conn.getActorCount();
+        System.out.println(count);
+
 
     }
 
