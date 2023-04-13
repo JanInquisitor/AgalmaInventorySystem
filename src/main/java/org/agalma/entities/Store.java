@@ -17,6 +17,8 @@ import java.util.List;
 public class Store extends Storage {
     String name;
     String address; // Maybe make an address class
+
+    // This list should probably check the database to see if there are stored items linked to this particular store.
     private final ArrayList<ProductItem> storedItems;
 
     public Store(String name, String address) {
@@ -105,7 +107,6 @@ public class Store extends Storage {
         );
     }
 
-
     public int totalProductsQuantity() {
         int sum = 0;
         for (ProductItem item : storedItems)
@@ -146,6 +147,10 @@ public class Store extends Storage {
     }
 
     public void generateInvoice() throws ExecutionControl.NotImplementedException {
+        throw new ExecutionControl.NotImplementedException("Method not yet implemented.");
+    }
+
+    private void populateStoredItemsList() throws ExecutionControl.NotImplementedException {
         throw new ExecutionControl.NotImplementedException("Method not yet implemented.");
     }
 
