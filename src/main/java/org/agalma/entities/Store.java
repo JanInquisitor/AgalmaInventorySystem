@@ -1,12 +1,18 @@
 package org.agalma.entities;
 
 import jdk.jshell.spi.ExecutionControl;
+import org.agalma.data.DatabaseConnection;
+import org.agalma.interfaces.Storage;
 import org.agalma.services.printing.InventoryTablePrinter;
+import org.agalma.types.Address;
 import org.agalma.utils.Transfer;
 import org.jetbrains.annotations.NotNull;
 
 import javax.print.PrintService;
 import java.awt.print.PrinterJob;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -14,7 +20,7 @@ import java.util.Arrays;
 import java.util.List;
 
 
-public class Store extends Storage {
+public class Store implements Storage {
     String name;
     String address; // Maybe make an address class
 
@@ -24,7 +30,7 @@ public class Store extends Storage {
     public Store(String name, String address) {
         this.name = name;
         this.address = address;
-        this.storedItems = new ArrayList<ProductItem>();
+        this.storedItems = new ArrayList<>();
     }
 
     @Override

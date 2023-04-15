@@ -2,7 +2,7 @@ package org.agalma.utils;
 
 
 import org.agalma.entities.ProductItem;
-import org.agalma.entities.Storage;
+import org.agalma.interfaces.Storage;
 
 // If transfering becomes more complicated I'll consider making it an interface.
 public class Transfer {

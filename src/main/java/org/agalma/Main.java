@@ -7,11 +7,13 @@ import org.agalma.entities.ProductItem;
 import java.awt.print.PrinterException;
 import java.time.LocalDateTime;
 
+import java.sql.*;
+
 
 public class Main {
-    public static void main(String[] args) throws PrinterException {
+    public static void main(String[] args) {
 
-        // Create  stores
+//         Create  stores
         Store blueMall = new Store("Blue Mall", "Av. Winston Churchill.");
         Store puntaCana = new Store("Punta Cana", "Blue mall Punta cana.");
 
@@ -93,18 +95,6 @@ public class Main {
         // Testing Store functionalities
         System.out.println(blueMall.searchByName("Jabon Cielo"));
         System.out.println("Stored items in blue mall: " + blueMall.totalProductsQuantity());
-
-
-        String url = "jdbc:postgresql://localhost/fishnetdb";
-        String user = "postgres";
-        String password = "admin";
-
-        DatabaseConnection conn = new DatabaseConnection(url, user, password);
-//        conn.connect();
-        int count = conn.getActorCount();
-        System.out.println(count);
-
-
     }
 
 }
