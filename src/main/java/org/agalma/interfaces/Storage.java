@@ -27,7 +27,6 @@ public interface Storage {
 
     void addItems(ProductItem[] items);
 
-    // Here products will be created with this factory method inherited from the storage parent abstract class.
     // This method don't always need to return a new instance, if there's already built instances then it will return
     // one of those.
     public  Product createProduct(String ISBN, String name, boolean sale, String barcode, double price, int quantity, LocalDateTime creationDate, String store);

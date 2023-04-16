@@ -22,7 +22,7 @@ import java.util.List;
 
 public class Store implements Storage {
     String name;
-    String address; // Maybe make an address class
+    String address;
 
     // This list should probably check the database to see if there are stored items linked to this particular store.
     private final ArrayList<ProductItem> storedItems;
