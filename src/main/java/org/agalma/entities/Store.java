@@ -1,7 +1,6 @@
 package org.agalma.entities;
 
 import jdk.jshell.spi.ExecutionControl;
-import org.agalma.data.DatabaseConnection;
 import org.agalma.interfaces.Storage;
 import org.agalma.services.printing.InventoryTablePrinter;
 import org.agalma.types.Address;
@@ -10,9 +9,6 @@ import org.jetbrains.annotations.NotNull;
 
 import javax.print.PrintService;
 import java.awt.print.PrinterJob;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
