@@ -17,8 +17,8 @@ public abstract class Product {
         this.ingredients = null;
     }
 
-    public Product(String ISBN, String name, boolean sale, String[] ingredients) {
-        this.GTIN = ISBN;
+    public Product(String GTIN, String name, boolean sale, String[] ingredients) {
+        this.GTIN = GTIN;
         this.name = name;
         this.sale = sale;
         this.ingredients = ingredients;
