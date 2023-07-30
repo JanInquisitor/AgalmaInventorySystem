@@ -12,8 +12,8 @@ public class ProductItem extends Product {
 
 //    private int batchNumber = Integer.parseInt(null);
 
-    public ProductItem(String ISBN, String name, boolean sale, String barcode, double price, int quantity, LocalDateTime creationDate, String store) {
-        super(ISBN, name, sale);
+    public ProductItem(String GTIN, String name, boolean sale, String barcode, double price, int quantity, LocalDateTime creationDate, String store) {
+        super(GTIN, name, sale);
         this.barcode = barcode;
         this.price = price;
         this.quantity = quantity;
@@ -21,34 +21,37 @@ public class ProductItem extends Product {
         this.store = store;
     }
 
-    public ProductItem(String ISBN, String name, boolean sale, String barcode, double price, int quantity, LocalDateTime creationDate, String store, String[] ingredients) {
-        super(ISBN, name, sale, ingredients);
+    public ProductItem(String GTIN, String name, boolean sale, String barcode, double price, int quantity, LocalDateTime creationDate, String store, String[] ingredients) {
+        super(GTIN, name, sale, ingredients);
         this.barcode = barcode;
         this.price = price;
         this.quantity = quantity;
         this.creationDate = creationDate;
         this.store = store;
-    }
-
-    public int getQuantity() {
-        return quantity;
     }
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
 
-    public String getLocation() {
-        return store;
+    public String getBarcode() {
+        return barcode;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public int getQuantity() {
+        return quantity;
     }
 
     public LocalDateTime getCreationDate() {
         return creationDate;
     }
 
-    public double getTotalPrice() {
-        return price * quantity;
+    public String getStore() {
+        return store;
     }
-
 }
 
