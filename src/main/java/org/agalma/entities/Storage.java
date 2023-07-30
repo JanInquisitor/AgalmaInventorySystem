@@ -8,15 +8,17 @@ import java.util.List;
 // Considering moving some methods to an interface.
 public abstract class Storage {
 
-    public abstract ProductItem searchByName(String name);
+    public abstract Product searchByName(String name);
 
-    public abstract ProductItem searchByCode(int code);
+    public abstract Product searchByCode(int code);
 
-    public abstract ProductItem searchByDate(LocalDate additionDate);
+    public abstract Product searchByDate(LocalDate additionDate);
 
     public abstract ArrayList<ProductItem> getStoredItems();
 
     public abstract void addItem(ProductItem item);
+
+    public abstract void addItem(String GTIN, String name, boolean sale, String barcode, double price, int quantity, LocalDateTime creationDate, String store);
 
     public abstract void addItems(List<ProductItem> item);
 

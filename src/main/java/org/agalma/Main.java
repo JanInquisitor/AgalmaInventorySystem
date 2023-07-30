@@ -1,15 +1,19 @@
 package org.agalma;
 
+import org.agalma.data.DatabaseConnection;
 import org.agalma.entities.Store;
 import org.agalma.entities.ProductItem;
 
+import java.awt.print.PrinterException;
 import java.time.LocalDateTime;
+
+import java.sql.*;
 
 
 public class Main {
     public static void main(String[] args) {
 
-        // Create  stores
+//         Create  stores
         Store blueMall = new Store("Blue Mall", "Av. Winston Churchill.");
         Store puntaCana = new Store("Punta Cana", "Blue mall Punta cana.");
 
@@ -20,7 +24,7 @@ public class Main {
                 false,
                 "sample_barcode",
                 456,
-                50,
+                7,
                 LocalDateTime.now(),
                 "Blue mall");
 
@@ -30,7 +34,7 @@ public class Main {
                 false,
                 "sample_barcode",
                 275,
-                400,
+                116,
                 LocalDateTime.now(),
                 "Blue mall");
 
@@ -55,6 +59,26 @@ public class Main {
                 "Punta cana");
 
 
+        ProductItem mintSoapTwo = blueMall.createProduct(
+                "16284",
+                "Jabon menta.",
+                false,
+                "sample_barcode",
+                275,
+                71,
+                LocalDateTime.now(),
+                "Punta cana");
+
+        ProductItem mintSoapThree = blueMall.createProduct(
+                "8282",
+                "Jabon menta.",
+                false,
+                "sample_barcode",
+                275,
+                71,
+                LocalDateTime.now(),
+                "Punta cana");
+
         // Create an Array of ProductItems and add it to the store.
         ProductItem[] firstItemsArray = {bodyLotion, soap, goatMilkSoap, mintSoap};
         blueMall.addItems(firstItemsArray);
@@ -70,8 +94,7 @@ public class Main {
 
         // Testing Store functionalities
         System.out.println(blueMall.searchByName("Jabon Cielo"));
-        System.out.println(blueMall.totalProductsQuantity());
-
+        System.out.println("Stored items in blue mall: " + blueMall.totalProductsQuantity());
     }
 
 }
