@@ -57,7 +57,7 @@ public class Pools {
     }
 
     private static class MyRunnable implements Runnable {
-        private String name;
+        private final String name;
 
         public MyRunnable(String name) {
             this.name = name;

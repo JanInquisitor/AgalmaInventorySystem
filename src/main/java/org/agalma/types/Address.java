@@ -1,11 +1,11 @@
 package org.agalma.types;
 
 public class Address {
-    private String streetAddress;
-    private String city;
-    private String state;
-    private String zipCode;
-    private String country;
+    private final String streetAddress;
+    private final String city;
+    private final String state;
+    private final String zipCode;
+    private final String country;
 
 
     public Address(String streetAddress, String city, String state, String zipCode, String country) {

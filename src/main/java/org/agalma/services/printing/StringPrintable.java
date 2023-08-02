@@ -9,7 +9,7 @@ import java.awt.print.PrinterException;
 // @TODO: Implement this class
 public class StringPrintable implements Printable {
 
-    private String text;
+    private final String text;
 
     public StringPrintable(String text) {
         this.text = text;
