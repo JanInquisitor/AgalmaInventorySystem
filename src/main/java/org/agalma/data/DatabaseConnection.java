@@ -3,9 +3,9 @@ package org.agalma.data;
 import java.sql.*;
 
 public class DatabaseConnection {
-    private String url = "jdbc:postgresql://localhost/agalmadb";
-    private String user = "postgres";
-    private String password = "admin";
+    private final String url = "jdbc:postgresql://localhost/agalmadb";
+    private final String user = "postgres";
+    private final String password = "admin";
 
     public DatabaseConnection() {
     }

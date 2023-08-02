@@ -4,44 +4,55 @@ import org.agalma.entities.ProductItem;
 import org.agalma.entities.Store;
 
 import javax.swing.*;
+import javax.swing.border.Border;
+import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDateTime;
 
-public class AgalmaSystemFrame extends JFrame {
-    private JPanel panelMain;
-    private JTable productTable;
-    private JScrollPane scrollPane;
-    private JButton addItemBtn;
+public class AgalmaSystemFrameOld extends JFrame implements ActionListener {
 
-    public AgalmaSystemFrame() {
+    JTable productTable;
+    
+    JButton addButton;
+    JButton searchButton;
+
+    public AgalmaSystemFrameOld() {
         super("Agalma");
 
         // Application Main Frame Configuration Settings
-        configuration();
+        setName("SQLite Viewer");
+        setLayout(null);
+        setResizable(true);
+        setLocationRelativeTo(null);
+        setSize(700, 500);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        getContentPane().setBackground(Color.LIGHT_GRAY);
 
         // Initializing components
         initComponents();
 
         setVisible(true);
-
     }
 
-    private void configuration() {
-        setName("SQLite Viewer");
-        setResizable(false);
-        setLocationRelativeTo(null);
-        setContentPane(panelMain);
-        setSize(700, 500);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        getContentPane().setBackground(Color.LIGHT_GRAY);
+    void initComponents() {
+
+        // Product table
+        initProductTable();
+
+        addButton = new JButton();
+        addButton = new JButton("Open");
+        addButton.setBounds(477, 300, 95, 32);
+        addButton.setName("OpenFileButton");
+        addButton.addActionListener(this);
+        add(addButton);
     }
 
     public void initProductTable() {
         String[] columnNames = {
-                "GTIN",
+                "ISBN",
                 "Name",
                 "sale",
                 "barcode",
@@ -60,7 +71,6 @@ public class AgalmaSystemFrame extends JFrame {
                     item.getProductGTIN(),
                     item.getProductName(),
                     false,
-                    item.getBarcode(),
                     item.getPrice(),
                     item.getQuantity(),
                     item.getCreationDate(),
@@ -68,11 +78,23 @@ public class AgalmaSystemFrame extends JFrame {
             };
         }
 
-//        DataTable dataTable = new DataTable();
+        DataTable dataTable = new DataTable();
         DefaultTableModel tableModel = new DefaultTableModel(data, columnNames);
-        productTable.setModel(tableModel);
+        productTable = new JTable(tableModel);
         productTable.setName("Product_Table");
-
+        Border titledBorder = BorderFactory.createTitledBorder(
+                BorderFactory.createLineBorder(Color.BLACK, 2), // Bold line
+                "Table Title", // Title text
+                TitledBorder.DEFAULT_JUSTIFICATION,
+                TitledBorder.DEFAULT_POSITION,
+                new Font(Font.SANS_SERIF, Font.PLAIN, 12), // Bold font
+                Color.BLACK
+        );
+        JScrollPane scrollPane = new JScrollPane(productTable);
+        scrollPane.setBounds(25, 10, 650, 200);
+        scrollPane.setBorder(titledBorder);
+        scrollPane.setBackground(Color.LIGHT_GRAY);
+        add(scrollPane);
     }
 
     private ProductItem[] generateProducts() {
@@ -146,14 +168,8 @@ public class AgalmaSystemFrame extends JFrame {
         return productsArray;
     }
 
-    private void initComponents() {
-        initProductTable();
-        addItemBtn.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
+    @Override
+    public void actionPerformed(ActionEvent e) {
 
-            }
-        });
     }
-
 }

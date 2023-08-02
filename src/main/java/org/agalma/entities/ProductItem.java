@@ -4,11 +4,11 @@ import java.time.LocalDateTime;
 
 // This class is used for keeping track and handling the products items in the inventory and its information,
 public class ProductItem extends Product {
-    private String barcode;
-    private double price;
+    private final String barcode;
+    private final double price;
     private int quantity;
     private final LocalDateTime creationDate;
-    private String store;
+    private final String store;
 
 //    private int batchNumber = Integer.parseInt(null);
 

@@ -3,10 +3,10 @@ package org.agalma.entities;
 import java.util.Objects;
 
 public abstract class Product {
-    private String GTIN;
+    private final String GTIN;
     private final String name;
     private String description;
-    private boolean sale;
+    private final boolean sale;
     private final String[] ingredients;
 
 
