@@ -5,7 +5,10 @@ import java.awt.*;
 
 public class ItemCreationModal extends JFrame {
     public ItemCreationModal() {
+
         configuration();
+
+        setVisible(true);
     }
 
     private void configuration() {
