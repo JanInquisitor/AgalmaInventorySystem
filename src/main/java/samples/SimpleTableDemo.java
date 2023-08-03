@@ -29,7 +29,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package org.agalma.views;
+package samples;
 
 /*
  * SimpleTableDemo.java requires no other files.
@@ -45,7 +45,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 public class SimpleTableDemo extends JPanel {
-    private boolean DEBUG = false;
+    private final boolean DEBUG = false;
 
     public SimpleTableDemo() {
         super(new GridLayout(1,0));
@@ -58,15 +58,15 @@ public class SimpleTableDemo extends JPanel {
 
         Object[][] data = {
 	    {"Kathy", "Smith",
-	     "Snowboarding", new Integer(5), new Boolean(false)},
+	     "Snowboarding", Integer.valueOf(5), Boolean.FALSE},
 	    {"John", "Doe",
-	     "Rowing", new Integer(3), new Boolean(true)},
+	     "Rowing", Integer.valueOf(3), Boolean.TRUE},
 	    {"Sue", "Black",
-	     "Knitting", new Integer(2), new Boolean(false)},
+	     "Knitting", Integer.valueOf(2), Boolean.FALSE},
 	    {"Jane", "White",
-	     "Speed reading", new Integer(20), new Boolean(true)},
+	     "Speed reading", Integer.valueOf(20), Boolean.TRUE},
 	    {"Joe", "Brown",
-	     "Pool", new Integer(10), new Boolean(false)}
+	     "Pool", Integer.valueOf(10), Boolean.FALSE}
         };
 
         final JTable table = new JTable(data, columnNames);

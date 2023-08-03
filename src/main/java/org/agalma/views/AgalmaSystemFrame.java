@@ -16,6 +16,8 @@ public class AgalmaSystemFrame extends JFrame {
     private JScrollPane scrollPane;
     private JButton addItemBtn;
 
+    ItemCreationModal itemCreationModal;
+
     public AgalmaSystemFrame() {
         super("Agalma");
 
@@ -151,7 +153,13 @@ public class AgalmaSystemFrame extends JFrame {
         addItemBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                // Open the product entry form when the "Open" button is clicked
+                if (itemCreationModal == null) {
+                    itemCreationModal = new ItemCreationModal();
+                } else {
+                    // If the form is already open, bring it to the front
+                    itemCreationModal.toFront();
+                }
             }
         });
     }
