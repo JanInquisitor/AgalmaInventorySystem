@@ -4,6 +4,12 @@ import javax.swing.*;
 import java.awt.*;
 
 public class ItemCreationModal extends JFrame {
+    private JPanel panel1;
+    private JTextField testTextField;
+    private JTextField textField2;
+    private JTextField textField3;
+    private JTextField textField1;
+
     public ItemCreationModal() {
 
         configuration();
