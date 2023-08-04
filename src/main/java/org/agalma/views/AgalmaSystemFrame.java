@@ -13,8 +13,10 @@ import java.time.LocalDateTime;
 public class AgalmaSystemFrame extends JFrame {
     private JPanel panelMain;
     private JTable productTable;
-    private JScrollPane scrollPane;
     private JButton addItemBtn;
+    private JScrollPane scrollTablePanel;
+    private JPanel sidePanel;
+    private JButton invoiceButton;
 
     ItemCreationModal itemCreationModal;
 
@@ -164,4 +166,7 @@ public class AgalmaSystemFrame extends JFrame {
         });
     }
 
+    private void createUIComponents() {
+        // TODO: place custom component creation code here
+    }
 }
