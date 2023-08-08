@@ -8,6 +8,8 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.time.LocalDateTime;
 
 public class AgalmaSystemFrame extends JFrame {
@@ -17,6 +19,9 @@ public class AgalmaSystemFrame extends JFrame {
     private JScrollPane scrollTablePanel;
     private JPanel sidePanel;
     private JButton invoiceButton;
+    private JButton button1;
+    private JButton button2;
+    private JButton button3;
 
     ItemCreationModal itemCreationModal;
 
@@ -35,7 +40,7 @@ public class AgalmaSystemFrame extends JFrame {
 
     private void configuration() {
         setName("SQLite Viewer");
-        setResizable(false);
+        setResizable(true);
         setLocationRelativeTo(null);
         setContentPane(panelMain);
         setSize(700, 500);
@@ -43,7 +48,7 @@ public class AgalmaSystemFrame extends JFrame {
         getContentPane().setBackground(Color.LIGHT_GRAY);
     }
 
-    public void initProductTable() {
+    public void populateProductTable() {
         String[] columnNames = {
                 "GTIN",
                 "Name",
@@ -151,22 +156,27 @@ public class AgalmaSystemFrame extends JFrame {
     }
 
     private void initComponents() {
-        initProductTable();
+        populateProductTable();
         addItemBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // Open the product entry form when the "Open" button is clicked
                 if (itemCreationModal == null) {
                     itemCreationModal = new ItemCreationModal();
+                    itemCreationModal.addWindowListener(new WindowAdapter() {
+                        @Override
+                        public void windowClosed(WindowEvent e) {
+                            // Set the itemCreationModal reference to null when the modal is closed
+                            itemCreationModal = null;
+                        }
+                    });
                 } else {
                     // If the form is already open, bring it to the front
                     itemCreationModal.toFront();
                 }
+                // Ensure the modal is visible
+                itemCreationModal.setVisible(true);
             }
         });
-    }
-
-    private void createUIComponents() {
-        // TODO: place custom component creation code here
     }
 }

@@ -14,7 +14,6 @@ public class AgalmaSystem {
         } catch (InterruptedException | InvocationTargetException e) {
             throw new RuntimeException(e);
         }
-
     }
 
     private static void mainEngine() throws InterruptedException, InvocationTargetException {
