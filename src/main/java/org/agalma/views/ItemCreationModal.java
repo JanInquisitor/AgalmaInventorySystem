@@ -10,6 +10,8 @@ import java.awt.event.ActionListener;
 import java.time.LocalDateTime;
 
 public class ItemCreationModal extends JFrame implements ActionListener {
+
+    private AgalmaSystemFrame agalmaSystemFrame; // Reference to AgalmaSystemFrame
     private JPanel panel1;
     private JTextField nameTextfield;
     private JTextField descriptionTextField;
@@ -19,8 +21,8 @@ public class ItemCreationModal extends JFrame implements ActionListener {
     private JLabel codeLabel;
     private JButton confirmBtn;
 
-    public ItemCreationModal() {
-        // Initialization code here (if needed)
+    public ItemCreationModal(AgalmaSystemFrame agalmaSystemFrame) { // Considering making a generic abstract creation Modal
+        this.agalmaSystemFrame = agalmaSystemFrame;
         configuration();
         initListeners();
         setContentPane(panel1);
@@ -56,9 +58,9 @@ public class ItemCreationModal extends JFrame implements ActionListener {
                         LocalDateTime.now(),
                         "Blue mall");
 
-                System.out.println(name);
-                System.out.println(description);
-                System.out.println(code);
+                agalmaSystemFrame.populateProductTable();
+
+                dispose();
             }
         });
     }

@@ -162,7 +162,7 @@ public class AgalmaSystemFrame extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 // Open the product entry form when the "Open" button is clicked
                 if (itemCreationModal == null) {
-                    itemCreationModal = new ItemCreationModal();
+                    itemCreationModal = new ItemCreationModal(AgalmaSystemFrame.this);
                     itemCreationModal.addWindowListener(new WindowAdapter() {
                         @Override
                         public void windowClosed(WindowEvent e) {
