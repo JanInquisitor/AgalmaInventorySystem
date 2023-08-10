@@ -58,7 +58,7 @@ public class ItemCreationModal extends JFrame implements ActionListener {
                         LocalDateTime.now(),
                         "Blue mall");
 
-                agalmaSystemFrame.populateProductTable();
+                agalmaSystemFrame.updateTable(item);
 
                 dispose();
             }

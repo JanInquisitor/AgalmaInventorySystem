@@ -5,6 +5,7 @@ import org.agalma.entities.Store;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -48,6 +49,7 @@ public class AgalmaSystemFrame extends JFrame {
         getContentPane().setBackground(Color.LIGHT_GRAY);
     }
 
+    // @TODO: Modify this method, generateProduct method and the whole class to make a decent table mechanism. The current state of this class is just for testing for now.
     public void populateProductTable() {
         String[] columnNames = {
                 "GTIN",
@@ -84,9 +86,57 @@ public class AgalmaSystemFrame extends JFrame {
 
     }
 
+    public void updateTable(ProductItem item) {
+        String[] columnNames = {
+                "GTIN",
+                "Name",
+                "sale",
+                "barcode",
+                "price",
+                "available",
+                "Created",
+                "Store_location"
+        };
+
+        ProductItem[] itemsArr = generateProducts();
+
+        // Create a new Object[][] array with one additional row for the new item
+        Object[][] updatedData = new Object[itemsArr.length + 1][columnNames.length];
+
+        // Copy data from the existing itemsArr into updatedData
+        for (int i = 0; i < itemsArr.length; i++) {
+            updatedData[i] = new Object[]{
+                    itemsArr[i].getProductGTIN(),
+                    itemsArr[i].getProductName(),
+                    false,
+                    itemsArr[i].getBarcode(),
+                    itemsArr[i].getPrice(),
+                    itemsArr[i].getQuantity(),
+                    itemsArr[i].getCreationDate(),
+                    itemsArr[i].getStore()
+            };
+        }
+
+        // Add the new item to the last row of updatedData
+        updatedData[itemsArr.length] = new Object[]{
+                item.getProductGTIN(),
+                item.getProductName(),
+                false,
+                item.getBarcode(),
+                item.getPrice(),
+                item.getQuantity(),
+                item.getCreationDate(),
+                item.getStore()
+        };
+
+        DefaultTableModel tableModel = new DefaultTableModel(updatedData, columnNames);
+        productTable.setModel(tableModel);
+    }
+
+
+
     private ProductItem[] generateProducts() {
         Store blueMall = new Store("Blue Mall", "Av. Winston Churchill.");
-        Store puntaCana = new Store("Punta Cana", "Blue mall Punta cana.");
 
         ProductItem bodyLotion = blueMall.createProduct(
                 "852395",
@@ -128,26 +178,6 @@ public class AgalmaSystemFrame extends JFrame {
                 LocalDateTime.now(),
                 "Punta cana");
 
-
-        ProductItem mintSoapTwo = blueMall.createProduct(
-                "16284",
-                "Jabon menta.",
-                false,
-                "sample_barcode",
-                275,
-                71,
-                LocalDateTime.now(),
-                "Punta cana");
-
-        ProductItem mintSoapThree = blueMall.createProduct(
-                "8282",
-                "Jabon menta.",
-                false,
-                "sample_barcode",
-                275,
-                71,
-                LocalDateTime.now(),
-                "Punta cana");
 
         // Create an Array of ProductItems and add it to the store.
         ProductItem[] productsArray = {bodyLotion, soap, goatMilkSoap, mintSoap};
