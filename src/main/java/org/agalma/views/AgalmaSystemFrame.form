@@ -21,13 +21,8 @@
           <color color="-2104859"/>
         </border>
         <children>
-          <component id="8770c" class="javax.swing.JTable" binding="productTable">
+          <component id="95faa" class="org.agalma.views.customComponents.DataTable" binding="dataTable" custom-create="true">
             <constraints/>
-            <properties>
-              <autoCreateRowSorter value="false"/>
-              <autoscrolls value="true"/>
-              <fillsViewportHeight value="true"/>
-            </properties>
           </component>
         </children>
       </scrollpane>

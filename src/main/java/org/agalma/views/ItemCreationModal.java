@@ -1,15 +1,16 @@
 package org.agalma.views;
 
-import org.agalma.entities.Product;
 import org.agalma.entities.ProductItem;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.time.LocalDateTime;
 
-public class ItemCreationModal extends JFrame implements ActionListener {
+public class ItemCreationModal extends JFrame {
 
     private AgalmaSystemFrame agalmaSystemFrame; // Reference to AgalmaSystemFrame
     private JPanel panel1;
@@ -24,23 +25,19 @@ public class ItemCreationModal extends JFrame implements ActionListener {
     public ItemCreationModal(AgalmaSystemFrame agalmaSystemFrame) { // Considering making a generic abstract creation Modal
         this.agalmaSystemFrame = agalmaSystemFrame;
         configuration();
-        initListeners();
         setContentPane(panel1);
         pack();
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setVisible(true);
 
-//        addWindowListener(new WindowAdapter() {
-//            @Override
-//            public void windowClosing(WindowEvent e) {
-//                // Dispose the window when it is closed
-//                dispose();
-//            }
-//        });
-    }
-
-    private void initListeners() {
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                // Dispose the window when it is closed
+                dispose();
+            }
+        });
         confirmBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -63,6 +60,7 @@ public class ItemCreationModal extends JFrame implements ActionListener {
                 dispose();
             }
         });
+
     }
 
     private void configuration() {
@@ -84,12 +82,5 @@ public class ItemCreationModal extends JFrame implements ActionListener {
 
     public String getCodeTextFieldValue() {
         return codeTextField.getText();
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-
-        System.out.println("Pressed!");
-        System.out.println(e);
     }
 }
